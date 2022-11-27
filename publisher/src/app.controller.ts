@@ -6,8 +6,10 @@ export class AppController {
   constructor(private readonly appService: AppService) {}
 
   @Get()
-  getHello(): string {
-    //Will 
-    return this.appService.getHello();
+  async getHello() {
+    //Will
+    console.log('PRODUCER, publishing message');
+    await this.appService.sendMessages();
+    return 'Mesages sent successfully';
   }
 }
